@@ -1,0 +1,706 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>
+      GPSylon - an Open Source Java GPS Map Application/Framework.
+    </title>
+    <meta name="description" content="Open Source Java GPS Project Homepage" />
+    <meta name="keywords"    content="gps java moving map garmin open source gpl nmea" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="geo.position" content="47.059734;15.473280" />
+    <meta name="geo.placename" content="Graz, Austria" />
+    <meta name="geo.region" content="AT"/ >
+    <link rel="stylesheet" type="text/css" media="screen"  href="gpsylon.css" />
+  </head>
+
+  <body>
+    <div id="wrapper">
+    <h1>GPSylon</h1>
+    <div id="googleads">
+    <script type="text/javascript"><!--
+google_ad_client = "pub-7437968091649250";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "316ba4";  // orig: 6699cc
+google_color_bg = "719ecb";      // orig: 003366
+google_color_link = "1f5b96";    // orig: ffffff
+google_color_url = "284766";     // orig: aecceb
+google_color_text = "ffffff";    // orig: aecceb
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+    </div> <!-- googleads -->
+    <div id="menu">
+    <h2>Menu</h2>
+    <ul>
+      <li><a href="#news">Latest News</a></li>
+      <li><a href="#general_description">General Description</a></li>
+      <li><a href="#screenshots">Screenshots</a></li>
+      <li><a href="#supported_devices">Supported GPSDevices</a></li>
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#run_gpsmap">Run GPSylon</a></li>
+      <li><a href="#download">Download</a></li>
+      <li><a href="#status">Status</a></li>
+      <li><a href="#plugins">Plugins</a></li>
+      <li><a href="#press">Articles about Gpsylon</a></li>
+      <li><a href="#otherprojects">Other Projects</a></li>
+      <li><a href="#todo">To Do List</a></li>
+      <li><a href="#compile">Compile Source Distribution</a></li>
+      <li><a href="#license">License</a></li>
+      <li><a href="changelog.txt">Change Log</a></li>
+      <li><a href="SW_Design.pdf">Software Design Document</a></li>
+      <li><a href="http://www.sourceforge.net/projects/gpsmap">GPSylon project page at Sourceforge</a></li>
+      <li><a
+          href="https://sourceforge.net/mailarchive/forum.php?forum_id=12596">Mailing List Archive</a></li>
+      <li>
+        <a href="http://sourceforge.net/donate/index.php?group_id=64816">
+          <img src="http://images.sourceforge.net/images/project-support.jpg" width="88" height="32" border="0" alt="Support This Project" />
+        </a>
+       </li>
+       <li>Other Projects
+         <ul>
+           <li><a href="http://www.tegmento.org/mapvcard">MapVcard</a></li>
+           <li><a href="http://www.tegmento.org/mapwikipedia">MapWikipedia</a></li>
+         </ul>
+       </li>
+    </ul>
+    </div> <!-- menu -->
+    <div id="content">
+    <p>
+      The dinopolis gpstool package is an open source (LGPL) Java GPS
+      application. It consists of different modules that may be used as a
+      programmer's framework or as an application. The main application is
+      <a href="#general_description">GPSylon</a>. A smaller command line tool (demonstration of the
+      gpsinput library) is named <a href="#gpstool">GPSTool</a>. The library that is used
+      to communicate with the gps device can be used independently and is provided as a
+      separate jar file (since version 0.5).
+    </p>
+
+    <a name="news"></a>
+      <h2>News</h2>
+      <p>
+        2006/10/23: New Release 0.5.2: Serial communication with gps devices fixed - no installation
+        of java serial libraries needed. Fixed some other bugs and added export of tracks in gpx format.
+      </p>
+      <p>
+        2006/02/10: Minor bug fix on loading gpx tracks.
+      </p>
+      <p>
+        2006/02/01: Giving Google Ads a try.
+      </p>
+      <p>
+        2006/02/01: Finally, separated the gpsinput library from the rest, redesign
+        of homepage (css'ed it). Version 0.5 released. No new features, just a
+        little code cleanup.
+      </p>
+      <p>
+        2003/05/12: As the name GPSMap is already used by several other projects/products, the main
+        application is renamed to GPSylon.<br>
+      </p>
+
+    <a name="general_description"></a>
+      <h2>Short Description of GPSylon</h2>
+
+   <p>
+    GPSylon is able to show maps downloaded from the
+    <!--
+    <a href="http://www.mapblast.com">mapblast</a>
+    or
+     -->
+    <a href="http://www.expedia.com">expedia</a>
+    map servers. It may connect
+    to a gps device and track your position on
+    the maps. At the moment, it is able to read gpsdata in the NMEA
+    standard from a serial gps device, a file or a gps daemon across a
+    network (available at the
+    <a href="http://freshmeat.net/projects/gpsd/">gpsd project page</a>).
+   </p>
+
+   <p>
+   The main feature is the display of various maps. GPSylon allows the
+   user to navigate around like in a digital atlas. It shows maps of
+   different scales, so missing maps of one scale do not result in a
+   black screen, but show the next larger scale. See <a
+   href="screenshots.html#diffscales">the screenshot section</a> for an
+   image.
+   </p>
+
+   <p>It allows the download of a single map or for a given location or
+for multiple maps in a given rectangular area from mapblast or expedia
+map servers. In the download mouse mode the user may choose a single map
+or by dragging a rectangle with the mouse, the user may choose to
+download maps for a larger area. This functionality allows the user to
+download maps in a given scale for a larger area. Please only download
+maps you need and be careful not to download thousands of maps, as the
+map providers will discontinue their service when it is misused!
+</p>
+
+      <p>
+        It uses the open source library <a href="http://openmap.bbn.com">openmap</a>
+        for various cartographic things.
+      </p>
+
+      <h3>Features</h3>
+      The following features are implemented.
+      <ul>
+        <li>Display different maps from mapblast or expedia server (also for
+          maps of different scale).</li>
+        <li>Display current position (gps position).</li>
+        <li>Read gps data from serial device, file, or gpsd (daemon).</li>
+        <li>Uses the following NMEA sentences: GLL, HDG, RMC, GGA, GSV, DBT, VTG, HTD.</li>
+        <li>Display a track from gps data.</li>
+        <li>Save the track.</li>
+        <li>Load a track created from GPSylon or from <a href="http://gpsdrive.kraftvoll.at">gpsdrive</a>.</li>
+        <li>Import maps from gpsdrive.</li>
+        <li>Download a map for a given position.</li>
+        <li>Download maps for an area.</li>
+        <li>Measure distance (ruler).</li>
+        <li>Read and display shape files (very basic, not well tested!).</li>
+        <li>display graticule lines</li>
+        <li>window to display the raw nmea data</li>
+        <li>
+         Location Marker support: (creating markers, load markers from files (comma
+         or space
+         separated (name, latitude, longitude [,category]) - in that order!)),
+         export markers to csv files, icons for categories, import geonet data
+          (available from <a
+            href="http://164.214.2.59/gns/html/index.html">http://164.214.2.59/gns/html/index.html</a>)
+        </li>
+         <li>Database support for Location Markers - selection of categories to
+          display.<br/>
+          Different databases are supported (derby and hsqldb (both pure java, zero configuration),
+          mysql and postgresql) - the database and all tables are created automatically</li>
+        <li>Level Of Detail: depending on the chosen scale, not all location
+          markers are displayed. The level of detail is increased when the user
+          zooms in or chooses to override the level of detail. This behaviour
+          might be tricky, when the user creates a location marker in a
+          category that does not show due to its higher level of detail. So the
+          user may not see the newly created marker.</li>
+        <li>Search for location markers and set the center of the map
+          to a search result. This is extremely useful in combination with the
+          geonet data. So, after importing the geonet data, one is able to
+          search for very small villages or other points of interest. When
+          using mysql or postgresql as a database, the lookup for names of location markers
+          is very fast, the (default) hsql database is about 5 to 10 times
+          slower (but also works perfectly, just slower :-). So if one or more
+          geonet files should be imported, I recommend mysql or postgresql (see in the
+          <a href="#installation_database">installation section</a> for
+          configuration details).</li>
+      </ul>
+
+      <a name="screenshots"></a>
+        <h2>Screenshots</h2>
+        <p>
+          Screenshots can be found <a href="screenshots.html">here</a>.
+        </p>
+
+        <a name="supported_devices"></a>
+          <h2>Supported GPS Devices</h2>
+          <p>
+            In general, all gps devices that support NMEA communication should
+            work. Garmin protocol support is built in.
+          </p>
+          <p>
+            There were reports of the following devices to work with GPSylon:
+            <ul>
+              <li>Garmin Etrex Summit/Legend (NMEA/garmin modes) tested by myself)</li>
+              <li>Garmin eMap (NMEA/garmin modes) (reported by Thomas M&uuml;ller))</li>
+              <li>Trimble Lassen SK8 (NMEA mode) (reported by Didier Donsez)</li>
+              <li>Garmin 35 (NMEA mode) (reported by Antonio)</li>
+              <li>Conexant '99 embedded module (NMEA mode) (reported by Antonio)</li>
+              <li>LeadTek Gps-9543 embedded module (NMEA mode) (reported by
+									Antonio)</li>
+              <li>Garmin Geko 201 (garmin mode) (reported by Frank Wilhelm)</li>
+              <li>GlobalSat Bluetooth GPS BT-338 (tested by myself)</li>
+              <li>Navilock NL-303P PDA-GPS-Receiver with Serial/USB converter (tested by Silverbullet)</li>
+            </ul>
+           </p>
+            <p>
+            Linux users please note: serial ports must be like /dev/ttySXX, as otherwise
+            rxtx does not recognize the port. So for bluetooth or USB devices,
+            a symlink is needed!
+            </p>
+            <p>
+            For bluetooth connection, I used the following commands under linux to
+            create a serial connection with bluetooth. First, find the id of your
+            bluetooth device. I used <code>hcitool</code> for this:
+            <pre>
+            hcitool scan
+            output:
+            Scanning ...
+            00:0B:5D:13:91:49       BEGRZ9001001
+            00:0D:B5:30:3C:0A       BT-GPS-303C0A
+            </pre>
+            The first id is my bluetooth dongle on the pc, the second is the gps device.
+            So, with this id, we can create a virtual serial port using <code>rfcomm</code>:
+            <pre>
+            rfcomm bind /dev/ttyS50 00:0D:B5:30:3C:0A
+            </pre>
+            As rxtx does not allow <code>/dev/rfcomm0</code> as serial device, I used <code>/dev/ttyS50</code>
+            (all ttys below 50 were already existent in my installation). A symlink from
+            ttyS50 to rfcomm0 also works!
+            </p>
+            <p>
+            After this, I set some port parameter (I'm not sure, if this is really needed!):
+            <pre>
+            stty -F/dev/ttyS50 -raw -onlcr
+            </pre>
+            Now, GPSTool or GPSylon can use the serial port <code>/dev/ttyS50</code> for
+            communication with the nmea bluetooth gps device.
+            </p>
+            <p>
+            After closing the application, one should release the bluetooth serial port:
+            <pre>
+            rfcomm release /dev/ttyS50
+            </pre>
+            Please note, that all these commands (except for the application start)
+            need to be run as root!
+            </p>
+
+          <a name="installation"></a>
+            <h2>Installation</h2>
+            <p>
+              No installation of GPSylon itself is needed. Nevertheless, some dependencies
+              exist:
+
+              <ul>
+                <li>
+                  Java in Version 1.4 (or better) is needed. It can be obtained from
+                  <a href="http://java.sun.com">Sun's Website</a>. Development is
+                  currently done with version 1.5, but tests are done for version 1.4.
+                  Java version 1.3 will NOT work!
+                </li>
+                <li>
+                  <p>
+                  Starting from Gpsylon V0.5.2, NO installation of the Java serial
+                  libraries are needed anymore! The native libraries are shipped with
+                  Gpsylon and start scripts are provided (for Linux and Windows)
+                  for Gpsylon and Gpstool (ther command line application). So just unpack
+                  the archive, and run (or double click) <code>gpsylon.cmd</code>, <code>gpstool.cmd</code>
+                  (for Windows) respectivly <code>gpsylon.sh</code>, <code>gpstool.sh</code> for
+                  Unix (Native Libraries for Linux, Sun Solaris and MacOSX are provided).
+                  As there is no Apple
+                  computer around for testing, I am not sure, if the unix scripts will work.
+                  Feedback is welcome!
+                  </p>
+                  <!--
+                  Java Communications API is needed, if you want to access a serial gps
+                  device directly (if the gps daemon is used or NMEA data is read from a
+                  file, this is not necessary). Sun released a new API just recently (only
+                  for Windows and Linux), so the decision was made to stick to the packages
+                  from <a href="http://www.rxtx.org">RXTX</a>. Use the 2.1 version of
+                  the libraries (with the gnu.io package name), NOT the javax.comm packages.
+                   -->
+                  <!--
+                  For Windows use the package provided from
+                  Sun at
+                  <a href="http://java.sun.com/products/javacomm/index.html">the comm-api
+                    webpage</a>. For Linux I used the package provided at
+                  <a href="http://www.rxtx.org">RXTX</a>. I used the version that uses
+                  javax.comm, not the one using gnu.io (to stay compatible with Sun's
+                  naming).
+                  -->
+                  <p>
+                    Jan van Haarst reported that
+                    <a href="http://www.brianpoe.com/comfoolery/">comfoolery</a>
+                    can be used to forward the serial data to a network socket. GPSylon may
+                    connect to this socket when it is configured to use gpsd instead of
+                    the serial device.
+                  </p>
+              </ul>
+            </p>
+            <a name="installation_database"></a>
+            <h3>Database for Location Markers</h3>
+            <p>
+              GPSylon is able to store and retrieve location markers from
+              relational databases via JDBC. By default it uses the pure java
+              open source <a href="http://hsqldb.sourceforge.net">Hypersonic
+              DB (hsqldb)</a>. It has the advantage that no installation is needed and
+              GPSylon creates a database on demand without any hassle.
+            </p>
+       <p>
+        As the
+        <a href="http://164.214.2.59/gns/html/index.html">geonet dataset</a>
+        is quite large (e.g. Austria 50 thousand entries,
+        Germany 170 thousand entries), hsqldb seemed quite slow. So I gave it a
+        try with mysql and it seems to be faster! Especially
+        searching for location markers is faster by a factor 5 to 10! So I
+        added a script
+        that creates the table(s) needed (syntax differs slightly from
+        the hsqldb syntax). The following steps are needed to use a
+        mysql database instead of the built in hsqldb:
+        <ul>
+         <li>Install MySQL :-)</li>
+         <li>
+          Create the database: e.g. with the command
+          <code>mysqladmin create gpsmap</code>
+         </li>
+         <li>Start GPSylon and edit database settings in the preferences
+          (Location Marker tab):</li>
+         <ul>
+          <li>
+           JDBC Url: <code>jdbc:mysql://localhost/gpsmap</code>
+          </li>
+          <li>
+           JDBC Driver: <code>com.mysql.jdbc.Driver</code>
+          </li>
+          <li>
+           SQL Script to create the Database:
+           <code>sql/create_loation_mysql.sql</code>
+          </li>
+         </ul>
+         <li>quit GPSylon</li>
+         <li>on the next start, GPSylon tries to access the new database, but
+          cannot (as the tables are missing). It asks for administrators
+          username/password (try "root" and empty password :-) so it can create
+          the table(s). It will also add a user "sa" with no password for
+          normal usage (access limited to gpsmap database).</li>
+         <li>That should be it! From now on, all location markers are stored
+          and retrieved from the MySQL database.</li>
+        </ul>
+        For Postgresql support use the following configuration:
+        <ul>
+         <li>JDBC Url: jdbc:postgresql://localhost/gpsmap</li>
+         <li>
+          JDBC Driver: <code>org.postgresql.Driver</code>
+         </li>
+         <li>
+          SQL Script to create the Database:
+          <code>sql/create_loation_postgresql.sql</code>
+         </li>
+        </ul>
+        The rest of the postgresql configuration is similar to the mysql
+        configuration (install database, create a gpsmap database, create user
+        and user rights, ...)
+       </p>
+            <a name="run_gpsmap"></a>
+              <h2>Run GPSylon</h2>
+              <p>
+                To start GPSylon, <a href="https://sourceforge.net/project/showfiles.php?group_id=64816">download</a> the gpstool-archive, unpack it and call<br>
+                  <code>java -jar gpssylon.jar</code><br>
+                    or if your environment is setup to handle jar-archives correctly, simply
+                    double click on the jar-archive (should work under
+                    windows). All needed classes are contained in the jar file.
+                    If you have the ant environment installed, call <code>ant run</code>.
+              </p>
+              <p>
+                For commandline arguments (everything may be configured in the
+                application as well!), call<br>
+                  <code>java -jar gpsylon.jar --help</code><br>
+              </p>
+	      <h3>Mouse Modes</h3>
+	      GPSylon supports different mouse modes. Mouse modes may be added
+	      as plugins. At the moment, two mouse modes are available:
+	      <ul>
+	      <li>Navigation Mode: click anywhere in the map to zoom in and
+	      center at the clicked position. If the shift-key is held, a click
+	      zooms out. More navigational functionality will be implemented
+	      soon (pan, ...)</li>
+	      <li>Download Mode: If the download mode is used, a window opens
+	      that displays some information about the map(s) to download. In
+	      the map window, a red rectangle (with crossed lines) shows the
+	      current location and size (size may not be exact and varies
+	      slightly from one internet map server to another). The user may
+	      change the location either by clicking in the map or by changing
+	      the coordinates in the download window. The coordinates may be
+	      entered in different formats (decimal, using the degree sign,
+	      etc.). The user may click and drag in the map to draw a
+	      rectangle. If the rectangle is larger that a single map, more
+	      than one rectangle is shown and the number of maps to download is
+	      shown in the download window. Please do not download maps
+	      excessively, as the companies that provide the maps do not like
+	      that and will stop their service if it is misused!</li>
+	      </ul>
+	      <a name="plugins"></a>
+	       <h2>Plugins</h2>
+	       <p>
+	       GPSylon supports plugins of various kinds. The plugin-jars
+	       are used without the need to set the
+	       <code>CLASSPATH</code>. All jars in the directories
+	       <code>[home]/.gpsylon/plugins</code> and in the
+	       <code>plugins</code> directory of the applicaton are used.
+	       </p>
+              <a name="download"></a>
+                <h2>Download</h2>
+                Please download the latest distribution of GPSylon at the
+                <a href="http://sourceforge.net/project/showfiles.php?group_id=64816">download
+                  page on sourceforge</a>.
+                <a name="status"></a>
+            <h2>Status</h2>
+            <p>
+             GPSylon is in beta-status. It runs quite stable, but many features
+             are
+             not implemented yet.
+            </p>
+            <a name="press"></a>
+             <h2>Articles about GPSylon</h2>
+             <p>
+               Elliotte Rusty Harold, the author of quite a few books about Java, mentioned GPSylon
+               in his <a href="http://www.cafeaulait.org/">Cafe au Lait blog</a>.
+             </p>
+            <a name="otherprojects"></a>
+             <h2>Other Projects</h2>
+             <p>
+               Other projects that use parts of the gpsinput/gpsylon code are:
+               <ul>
+                 <li><a href="http://www-adele.imag.fr/~donsez/dev/osgi/gpspositionproducer/readme.html">GPS Position Producer</a></li>
+               </ul>
+             </p>
+             <p>
+               Projects that are somehow related to this project:
+               <ul>
+                 <li><a href="http://www.gpsdrive.cc">Gpsdrive</a> was the main inspiration to write gpsylon.</li>
+                 <li><a href="http://mapgeneration.berlios.de/">MapGeneration</a> tries to create free
+                 vector data from NMEA streams - this was one of the goals gpsylon was written for!</li>
+                 <li><a href="http://maps4free.de">Maps4Free</a> tries to do the same as a community project.</li>
+               </ul>
+             </p>
+            <a name="todo"></a>
+             <h2>To Do List</h2>
+             <p>
+              urgent:
+              <ul>
+               <li>option to use always info from gpsdrive</li>
+               <li class="todo-done">optionally draw rectangle for small scale maps that do not
+                show (done (map manager plugin)): done</li>
+               <li>download maps also larger than 1280x1024</li>
+               <li>use repaint(int,int,int,int): mostly done</li>
+               <li>are there GPS devices, that do not send RMC (for gps
+                speed)??</li>
+               <li>check for speed sent from gps (calculation of distance
+                s=v*t) (tachometer)</li>
+               <li class="todo-done">window showing NMEA data: done</li>
+              </ul>
+              <p>
+               Todo (wishlist):
+              </p>
+              <p>routes
+               <ul>
+                <li>define route with mouse (like distant mouse mode)</li>
+                <li>name route</li>
+                <li>show table with available routes</li>
+                <li>download maps for a given route in a given scale (and image
+                 size)</li>
+                <li>follow a given route with gps</li>
+               </ul></p>
+
+              <p>waypoints
+               <ul>
+                <li class="todo-done">different lists of waypoints: done, categories should do
+                 the job</li>
+                <li class="todo-done">display different list of waypoints: done, categories
+                 should do it</li>
+                <li class="todo-done">different symbols for waypoints: done, for a couple of
+                 categories, more to come</li>
+                <li class="todo-done">store waypoints in database (hsqldb, mysql): done</li>
+               </ul></p>
+
+              <p>overlays
+               <ul>
+                <li>show major cities (CSV), use them as waypoints</li>
+                <li>shape files: done (experimental)</li>
+                <li>GML</li>
+               </ul></p>
+
+              <p>location database (GNR)
+               <ul>
+                <li class="todo-done">search for name in GNR (zipped files) (done, when gnr is
+                 imported)</li>
+                <li class="todo-done">goto location (done)</li>
+               </ul></p>
+
+              <p>GPS Device
+               <ul>
+                <li>upload/download waypoints</li>
+                <li class="todo-done">download Tracks: download is done</li>
+                <li>upload Tracks</li>
+               </ul></p>
+
+              <p>gps tracking
+               <ul>
+                <li class="todo-done">pursuit mode:   done, cdaller 2002/09/06</li>
+                <li>as soon as manual navigation on screen, disable pursuit
+                 mode.</li>
+                <li>different color for height or speed</li>
+                <li class="todo-done">save gps tracks: done</li>
+                <li class="todo-done">load gps tracks from gps device: done</li>
+                <li class="todo-done">load gps tracks from file: done for own tracks, track of
+                 gpdsrive and gml tracks</li>
+                <li>autoscale (set scale, depending on speed)</li>
+               </ul></p>
+
+              <p>vectorize tracks
+               <ul>
+                <li>define nodes (crossings) and arcs between nodes</li>
+                <li>define type of arcs (highway, smaller road, bicycle
+                 path)</li>
+                <li>export as GML</li>
+                <li>import as GML</li>
+               </ul></p>
+
+              <p>communication to other applications
+               <ul>
+                <li>import/export maps, tracks, waypoints to gpsdrive, gpspoint
+                 (partly done)</li>
+                <li>option to leave maps there or copy them to .gpsylon/maps
+                 directory</li>
+               </ul></p>
+
+              <p>maps
+               <ul>
+                <li>import scanned maps</li>
+                <li class="todo-done">download from different servers (expedia, mapblast, ...):
+                 done</li>
+                <li class="todo-done">allow proxy authentication: done</li>
+                <li>show table of maps (allow to delete, rename?, ...): partly done</li>
+                <li class="todo-done">download an area of maps: done<</li>
+               </ul></p>
+
+              <p>autoroute calculation
+               <ul>need vector data for this!</ul></p>
+
+              <p>speech
+               <ul>
+                <li>output</li>
+                <li>input</li>
+               </ul></p>
+
+              <p>distance notification
+               <ul><li>provide notifications for specific points (e.g. radar
+                 warning)</li></ul></p>
+
+              <p>
+               context menus (right mouse) / one button mouse (touchscreen)
+               support????
+               <ul>
+               </li>
+                <li>
+                 set position
+                </li>
+                <li>
+                 set destination
+                </li>
+                <li>
+                 set waypoint
+                </li>
+                <li>
+                 let each layer add menu for this
+                </li>
+               </ul>
+              </p>
+
+              <a name="compile"></a>
+               <h2>
+                Compile Source Distribution
+               </h2>
+               <p>
+                To compile the source distribution, the java make tool
+                <a href="http://jakarta.apache.org/ant/index.html">Ant</a>
+                from the apache project is needed. When correctly installed, a
+                <code>ant compile</code>
+                should be enough to compile the
+                source.<br>
+                 <code>ant help</code>
+                 gives all ant-tasks.
+               </p>
+
+               <a name="gpstool"></a>
+                <h2>
+                 Commandline tool GPSTool
+                </h2>
+
+                <p>
+                 GPSTool is a small command line application that demonstrates
+                 the usage of the classes to read data from a gps device. The
+                 main class is
+                 <code>org.dinopolis.gpstool.GPSTool</code>
+                 and it may
+                 be started using the provided gpstool-&lt;version&gt;.jar file
+                 (execute in a command window <code>java -jar gpsylon-&lt;version&gt;.jar</code>
+                 - double click does not make
+                 much sense, as it is a commandline application). Use "--help"
+                 to see all commandline switches.<br>
+                  The following features are implemented in GPSTool:
+                  <ul>
+                   <li>
+                    Show current position/altitude/speed/heading/info about
+                    satellites.
+                   </li>
+                   <li>
+                    Use NMEA or Garmin protocol.
+                   </li>
+                   <li>
+                    Download tracks, routes, and/or waypoints and print them in
+                    <a href="http://www.topografix.com/gpx.asp">GPX</a>
+                    format.
+                   </li>
+                   <li>
+                    Make screenshots from the display of the gps device. This
+							      is tested with the following models: Garmin eTrex Summit,
+								    eTrex Legend, eMap, Geko201, Streetpilot III (partly, needs
+									  more work - could not finish due to the device powered down
+									  after sending the 10th line of the image).
+                   </li>
+                   <li>
+                    Supprts
+                    <a href="http://jakarta.apache.org/velocity/">Velocity</a>
+                    templates to print tracks, routes, waypoints. These
+                    templates are easy to write. Use command line switch
+                    " --printdefaulttemplate" to show the gpx template. Other
+                    templates are provided in the auxiliary directory.
+                   </li>
+                  </ul>
+                </p>
+
+                <a name="license"></a>
+                 <h2>
+                  License
+                 </h2>
+
+                 <p>
+
+                  The source of the gpstool framework
+                  basically is licensed unter the Lesser Gnu
+                  Public License (LGPL). Some parts in the
+                  framework (e.g. the main application GPSylon)
+                  uses the Open Source library openmap. The OpenMap code is
+                  covered under the
+                  <a href="http://openmap.bbn.com/license.html">OpenMap
+                   license</a>,
+                  which is a modified version of Sun's artistic license, so
+                  take care which
+                  modules you use and which license you have to
+                  respect.
+                 </p>
+                 <p>
+                  The module that is responsible for reading gps
+                  data from a gps device in completely
+                  independent from the openmap library and may
+                  therefore be used under the LGPL license.
+                 </p>
+   <div id="footer">
+                 <p>
+                  Please report any comments, bugfixes, ...
+                  to
+                  <address>
+                   <a href="mailto:cdaller@users.sourceforge.net">Christof
+                    Dallermassl</a> at 47.059734&deg;/15.473280&deg;
+                  </address>
+                 </p>
+                 <a id="sflogo" href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=64816&amp;type=4" width="125" height="37" border="0" alt="SourceForge.net Logo" />
+                 </a>
+      </div> <!-- footer -->
+    </div> <!-- content -->
+  </div> <!-- wraper -->
+  <!--  google analytics -->
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    _uacct = "UA-264234-1";
+   urchinTracker();
+  </script>
+ </body>
+</html>

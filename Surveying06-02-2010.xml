@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UTMCoords>
+	<Coordinate>
+		<sector>12</sector>
+		<digraph>S</digraph>
+		<easting>518383.732</easting>
+		<northing>4253340.675</northing>
+	</Coordinate>
+	<Coordinate>
+		<sector>12</sector>
+		<digraph>S</digraph>
+		<easting>518232.593</easting>
+		<northing>4253214.390</northing>
+	</Coordinate>
+		<Coordinate>
+		<sector>12</sector>
+		<digraph>S</digraph>
+		<easting>518336.273</easting>
+		<northing>4253295.048</northing>
+	</Coordinate>
+		<Coordinate>
+		<sector>12</sector>
+		<digraph>S</digraph>
+		<easting>518186</easting>
+		<northing>4250956</northing>
+	</Coordinate>
+		<Coordinate>
+		<sector>12</sector>
+		<digraph>S</digraph>
+		<easting>518186</easting>
+		<northing>4251956</northing>
+	</Coordinate>
+	
+</UTMCoords>

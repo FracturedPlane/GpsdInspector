@@ -1,0 +1,24 @@
+<launch4jConfig>
+  <dontWrapJar>true</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>GPSInspector.jar</jar>
+  <outfile>C:\Users\Shawn\Favorites\Documents\NetBeansProjects\GpsInspector\dist\GpsInspector.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine>-Djava.library.path=.  -Xms256m  -Xmx1024m</cmdLine>
+  <chdir></chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <customProcName>false</customProcName>
+  <stayAlive>false</stayAlive>
+  <manifest></manifest>
+  <icon>C:\Users\Shawn\Favorites\Documents\NetBeansProjects\GpsInspector\Earth-Scan.ico</icon>
+  <jre>
+    <path></path>
+    <minVersion>1.6.0</minVersion>
+    <maxVersion></maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <initialHeapSize>256</initialHeapSize>
+    <maxHeapSize>1024</maxHeapSize>
+  </jre>
+</launch4jConfig>
