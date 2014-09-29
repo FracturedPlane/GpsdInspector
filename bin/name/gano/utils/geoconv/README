@@ -1,0 +1,80 @@
+Geographic coordinates conversion tool
+--------------------------------------
+
+This software is available under GPL. See the licence file that should
+be available with the files you get.
+
+
+1. To unpack the archive:
+  tar zxvf geoconv.tgz
+  cd geoconv
+
+
+2. To execute the graphical interface:
+  java -jar geoconv.jar 
+Select an input coordinate system, enter your coordinates and
+select the output coordinate system: the input coordinates
+are converted.
+
+
+3. To use the converter on line:
+  java -jar geoconv.jar -o output_system input coordinates
+example:
+  java -jar geoconv/geoconv.jar -o UTM Lambert 3 982616 157338 150
+converts the lambert 3 coordinates "982616 157338 150" into the
+UTM coordinate. Use "java -jar geoconv.jar -help" to determine
+the recognized coordinate systems.
+You can change the input/output length and angle units with the
+options -m, -km, -rad, -deg, -degmn, and -degmnsec.
+
+
+4. You can convert all coordinates stored in a file. Each line
+of the input file is interpreted as an input coordinate (except
+for blank lines and comment lines starting with # that are ignored).
+Each input line should be a valid input coordinate (e.g.
+"Lambert 3 982616 157338 150") as produced by this software.
+
+Example of valid input file:
+Lambert 3 982616 157338 150
+Lambert 3 993073 163416 10
+
+That you can convert to UTM coordinates:
+java -jar geoconv.jar -o UTM input_file 
+
+If your input file is formated differently, you can use the -in
+command line option to give an input line format (and conversely
+the -out option to produce different outputs). Each input line
+is convert using the -in filter in a valid coordinate line and
+each output line is converted from a valid coordinate line to
+whatever you want using the output filter. The default line fields
+separator is a space but you can replace it using the -sep option.
+In the -in or -out strings, ${1} represents the first line field, ${2}
+the second field, and so on. ${1.1} represents the first field of
+the input line, ${2.1} the first field of the output coordinate, etc.
+${1.>3} reprents all fields from the third one in the input line.
+${4:0} means field number 4 or value 0 if it does not exist.
+You can make simple arithmethic (+,-,*,/) using bracketed expressions.
+
+Suppose that you got a file such as:
+
+# label   input coordinates (Lambert 3 in kilometers)    comment
+WPT1	982.616	157.338	150	Some place
+WPT2	993.073	163.416 	Airport
+
+And that you want an output such as:
+
+# label  output coordinates (UTM)	comment
+WPT1    32      N       345043  4831103 150     Some place
+WPT2    32      N       355956  4836318 10      Airport
+
+You would use:
+java -jar geoconv.jar -o UTM -sep '\t' -in 'Lambert 3 {${2}*1000.0} {${3}*1000.0} ${4:0}' -out '${1.1}\t${2.2}\t${2.3}\t${2.4}\t${2.5}\t${2.6}\t${1.>4}' input_file
+ 
+
+5. To get help:
+  java -jar geoconv.jar -help
+
+
+Johan Montagnat
+johan@creatis.insa-lyon.fr
+
