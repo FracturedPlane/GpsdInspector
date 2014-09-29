@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GPSCoords>
+	<Coordinate>
+		<Lat>38.37352459684316</Lat>
+		<Lon>-110.70807172997937</Lon>
+		<Altitude>2000.0</Altitude>
+	</Coordinate>
+	<Coordinate>
+		<Lat>38.374428662739405</Lat>
+		<Lon>-110.70921292616497</Lon>
+		<Altitude>0.0</Altitude>
+	</Coordinate>
+	<Coordinate>
+		<Lat>38.421667102287394</Lat>
+		<Lon>-110.76106545470275</Lon>
+		<Altitude>0.0</Altitude>
+	</Coordinate>
+</GPSCoords>

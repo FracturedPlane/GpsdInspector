@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UTMCoords>
+	<Coordinate>
+		<sector>12</sector>
+		<digraph>S</digraph>
+		<easting>525500</easting>
+		<northing>4247300</northing>
+	</Coordinate>
+	<Coordinate>
+		<sector>12</sector>
+		<digraph>S</digraph>
+		<easting>525400</easting>
+		<northing>4247400</northing>
+	</Coordinate>
+</UTMCoords>
